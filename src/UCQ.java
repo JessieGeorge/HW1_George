@@ -26,6 +26,7 @@ public class UCQ {
 			int greenInt = Integer.parseInt(greenBI, 2);
 			int blueInt = Integer.parseInt(blueBI, 2);
 			
+			// representative color in the center of the range
 			int red = redInt * 32 + 16;
 			int green = greenInt * 32 + 16;
 			int blue = blueInt * 64 + 32;

@@ -10,6 +10,9 @@ menu function prints menu and calls the other classes based on user's choice.
 in the menu function, outputLocation is set to a folder called HW1_Output in 
 the current directory. This is where the output ppm images will be stored.
 
+main function reads the input ppm file.
+
+--
 Grayscale.java converts the image to gray-scale using the formula:
 int gray = (int) Math.round(0.299 * rgb[0] 
 						+ 0.587 * rgb[1] 
@@ -17,14 +20,37 @@ int gray = (int) Math.round(0.299 * rgb[0]
 R,G,B is set to gray.
 Output is written to [InputFileName]-gray.ppm
 
+--
+OrderedDithering.java
+TODO
 
+--
+UCQ.java is for Uniform Color Quantization
 
-------
-CS4551 Multimedia Software Systems
-@ Author: Elaine Kang
-Computer Science Department
-California State University, Los Angeles
+initLUT function initializes the look up table. 
+For each index 0-255,
+	An 8-bit binary index is created.
+	This is split into 3-bit red, 3-bit green, and 2-bit blue indices.
+	Convert R, G, B indices to integer.
+	Pick the representative color in the center of the range.
+Print the LUT.
 
+createIndexImage function creates a gray-scale index image.
+For each pixel of the original image,
+	Using the RGB values, create an 8-bit LUT index.
+	Convert index to integer. Assign that value to R,G,B to make it gray.
+Output is written to [InputFileName]-index.ppm
+
+createQuantizedImage function creates the uniform color quantized image.
+For each pixel of the index image,
+	Get the LUT R,G,B values for that index and set pixel.
+Output is written to [InputFileName]-QT8.ppm
+
+--
+MImage.java is the utility class.
+Ducky.ppm is the example input.
+
+--
 Compile requirement
 ======================================
 JDK Version 7.0 or above
@@ -32,13 +58,13 @@ JDK Version 7.0 or above
 
 Compile Instruction on Command Line:
 ======================================
-javac CS4551_Main.java MImage.java 
+javac CS4551_George.java MImage.java 
 or 
 javac *.java
 
 
 Execution Instruction on Command Line:
 ======================================
-java CS4551_Main [inputfile]
+java CS4551_George [inputfile]
 e.g.
-java CS4551_Main Ducky.ppm
+java CS4551_George Ducky.ppm

@@ -2,13 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/*******************************************************
- * CS4551 Multimedia Software Systems @ Author: Elaine Kang
- * 
- * 
- * Template Code - demonstrate how to use MImage class
- *******************************************************/
-
 public class CS4551_George {
 	
 	public static String getImageShortName(MImage img) {
