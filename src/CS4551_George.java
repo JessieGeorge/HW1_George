@@ -1,14 +1,17 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CS4551_George {
 	
 	public static String getImageShortName(MImage img) {
-		// remove .ppm from image file name
+		// remove leading path and .ppm from image file name
+		
 		String origName = img.getName();
 		int len = origName.length();
-		String shortName = origName.substring(0, len-4);
+		int filepathEnd = origName.lastIndexOf("\\");
+		String shortName = origName.substring(filepathEnd + 1, len-4);
 		return shortName;
 	}
 	
@@ -78,7 +81,15 @@ public class CS4551_George {
 		}
 
 		System.out.println("--Welcome to Multimedia Software System--");
-
+		
+		File f = new File(args[0]);
+		if (!f.exists()) {
+			System.out.println("ERROR: Image file " + args[0] + 
+					" does not exist.");
+			System.out.println();
+			System.exit(1);
+		}
+		
 		// Create an Image object with the input PPM file name.
 		MImage img = new MImage(args[0]);
 		System.out.println(img);
