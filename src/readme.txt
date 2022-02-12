@@ -9,6 +9,8 @@ which is helpful later when we write output files.
 menu function prints menu and calls the other classes based on user's choice.
 in the menu function, outputLocation is set to a folder called HW1_Output in 
 the current directory. This is where the output ppm images will be stored.
+A copy of the original image is created, this is what we send to the conversion
+classes so that the original image is never altered.
 
 main function reads the input ppm file.
 
