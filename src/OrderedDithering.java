@@ -93,7 +93,7 @@ public class OrderedDithering {
 					System.out.println("i = " + i + ", j = " + j + ", D[i][j] = " + D[i][j]); // REMOVETHIS
 				}
 				
-				if (rgb[0] > D[i][j]) {
+				if (rgb[0] > D[j][i]) {
 					// white // TODO: double check if this should be white or black
 					rgb[0] = 255;
 					rgb[1] = 255;
