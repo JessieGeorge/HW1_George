@@ -40,44 +40,6 @@ public class OrderedDithering {
 		int h = grayImg.getH();
 		int[] rgb = new int[3];
 		
-		/* 
-		 * Testing: 
-		 * checking the pixel with minimum color.
-		 * 
-		 * checking the maximum possible number of black pixels 
-		 * for ordered dithering by comparing to the highest number 
-		 * in D matrix which is 15.
-		 * 
-		 * REMOVETHIS
-		 */
-		int min = 255; // initialize to highest possible color value
-		int minX = 0;
-		int minY = 0;
-		int maxPossibleBlack = 0;
-		for (int x = 0; x < w; x++) {
-			for (int y = 0; y < h; y++) {
-				grayImg.getPixel(x, y, rgb);
-				if (rgb[0] < min) {
-					min = rgb[0];
-					minX = x;
-					minY = y;
-				}
-				
-				if (rgb[0] <= 15) {
-					maxPossibleBlack++;
-				}
-				
-			}
-		}
-		
-		System.out.println("\nTESTING:"); 
-		System.out.println("Minimum color value = " + min + 
-				" at pixel location x = " + minX + " and y = " + minY);
-		System.out.println("Max possible number of black pixels "
-				+ "after ordered dithering would be = " + maxPossibleBlack);
-		System.out.println();
-		/* ---- END OF TESTING ---- */
-		
 		for (int x = 0; x < w; x++) {
 			for (int y = 0; y < h; y++) {
 				
@@ -89,13 +51,6 @@ public class OrderedDithering {
 				// Remap image values from 0-255 range into 0-16 range.
 				// k^2 + 1 = 17
 				int scaledGray = rgb[0] * 17 / 256;
-				
-				// Testing darkest pixel ... REMOVETHIS
-				if (x == 107 && y == 74) {
-					System.out.println("\nTESTING DARKEST PIXEL:"); 
-					grayImg.printPixel(x, y);
-					System.out.println("i = " + i + ", j = " + j + ", D[i][j] = " + D[i][j]); // REMOVETHIS
-				}
 				
 				if (scaledGray > D[j][i]) {
 					// white // TODO: double check if this should be white or black
@@ -110,13 +65,6 @@ public class OrderedDithering {
 				}
 				
 				grayImg.setPixel(x, y, rgb);
-				
-				// Testing darkest pixel ... REMOVETHIS
-				if (x == 107 && y == 74) {
-					grayImg.printPixel(x, y);
-					System.out.println(); 
-				}
-				
 			}
 		}
 		
