@@ -38,8 +38,12 @@ public class CS4551_George {
 			System.out.println(message);
 			choice = Integer.parseInt(br.readLine());
 			
-			System.out.println("\nMaking a copy of original image to edit.");
-			MImage copyImg = new MImage(img.getName());
+			MImage copyImg = null; // initialize
+			if (choice > 0 && choice < 4) {
+				System.out.println("\nMaking a copy "
+						+ "of original image to edit.");
+				copyImg = new MImage(img.getName());
+			}
 			
 			switch(choice) {
 				case 1:
