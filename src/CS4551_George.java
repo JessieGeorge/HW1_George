@@ -18,7 +18,7 @@ public class CS4551_George {
 	public static void menu(MImage img) throws IOException {
 		
 		String currentDir = System.getProperty("user.dir");
-		String outputLocation = currentDir + "\\HW1_Output\\";
+		String outputLocation = currentDir;
 		
 		String shortName = getImageShortName(img);
 		
