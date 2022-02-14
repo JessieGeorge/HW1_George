@@ -17,9 +17,6 @@ public class CS4551_George {
 	
 	public static void menu(MImage img) throws IOException {
 		
-		String currentDir = System.getProperty("user.dir");
-		String outputLocation = currentDir;
-		
 		String shortName = getImageShortName(img);
 		
 		BufferedReader br = new BufferedReader(
@@ -46,15 +43,15 @@ public class CS4551_George {
 			
 			switch(choice) {
 				case 1:
-					Grayscale.main(copyImg, outputLocation, shortName);
+					Grayscale.main(copyImg, shortName);
 					break;
 					
 				case 2:
-					OrderedDithering.main(copyImg, outputLocation, shortName);
+					OrderedDithering.main(copyImg, shortName);
 					break;
 					
 				case 3:
-					UCQ.main(copyImg, outputLocation, shortName);
+					UCQ.main(copyImg, shortName);
 					break;
 					
 				case 4:

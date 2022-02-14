@@ -4,10 +4,9 @@ public class OrderedDithering {
 	
 	static MImage grayImg;
 	
-	public static void setGrayImg(MImage originalImg, 
-			String outputLocation, String imageShortName) {
+	public static void setGrayImg(MImage originalImg, String imageShortName) {
 		
-		String grayImgPath = outputLocation + imageShortName + "-gray.ppm";
+		String grayImgPath = imageShortName + "-gray.ppm";
 		File grayFile = new File(grayImgPath);
 		
 		System.out.println("Checking if gray-scale image "
@@ -15,7 +14,7 @@ public class OrderedDithering {
 		if (!grayFile.exists()) {
 			System.out.println("Gray-scale image does not exist. "
 					+ "Generating it.");
-			Grayscale.main(originalImg, outputLocation, imageShortName);
+			Grayscale.main(originalImg, imageShortName);
 		} else {
 			System.out.println("Gray-scale image exists.");
 		}
@@ -23,10 +22,9 @@ public class OrderedDithering {
 		grayImg = new MImage(grayImgPath); 		
 	}
 	
-	public static void main(MImage img, String outputLocation, 
-			String imageShortName) {
+	public static void main(MImage img, String imageShortName) {
 		
-		setGrayImg(img, outputLocation, imageShortName);
+		setGrayImg(img, imageShortName);
 		
 		System.out.println("Applying Ordered Dithering to gray-scale image ...");
 		
@@ -69,6 +67,6 @@ public class OrderedDithering {
 		}
 		
 		// Save it into another PPM file.
-		grayImg.write2PPM(outputLocation + imageShortName + "-OD4.ppm");
+		grayImg.write2PPM(imageShortName + "-OD4.ppm");
 	}
 }

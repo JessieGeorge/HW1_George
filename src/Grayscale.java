@@ -1,7 +1,6 @@
 public class Grayscale {
 	
-	public static void main(MImage img, String outputLocation, 
-			String imageShortName) {
+	public static void main(MImage img, String imageShortName) {
 		
 		System.out.println("Converting " + img.getName() + " to Gray-scale ...");
 		
@@ -23,6 +22,6 @@ public class Grayscale {
 		}
 		
 		// Save it into another PPM file.
-		img.write2PPM(outputLocation + imageShortName + "-gray.ppm");
+		img.write2PPM(imageShortName + "-gray.ppm");
 	}
 }

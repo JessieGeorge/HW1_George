@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class UCQ {
 	
 	// 256 color values, 3 because we store R,G,B for each color
@@ -40,8 +38,7 @@ public class UCQ {
 		System.out.println();
 	}
 	
-	public static MImage createIndexImage(MImage img, String outputLocation, 
-			String imageShortName) {
+	public static MImage createIndexImage(MImage img, String imageShortName) {
 		int w = img.getW();
 		int h = img.getH();
 		int[] rgb = new int[3];
@@ -83,13 +80,13 @@ public class UCQ {
 		}
 		
 		// Save it into another PPM file.
-		img.write2PPM(outputLocation + imageShortName + "-index.ppm");
+		img.write2PPM(imageShortName + "-index.ppm");
 		
 		return img;
 	}
 	
 	public static void createQuantizedImage(MImage indexImage, 
-			String outputLocation, String imageShortName) {
+			String imageShortName) {
 		
 		int w = indexImage.getW();
 		int h = indexImage.getH();
@@ -109,20 +106,18 @@ public class UCQ {
 		}
 		
 		// Save it into another PPM file.
-		indexImage.write2PPM(outputLocation + imageShortName + "-QT8.ppm");
+		indexImage.write2PPM(imageShortName + "-QT8.ppm");
 		
 	}
 	
-	public static void main(MImage img, String outputLocation, 
-			String imageShortName) {
+	public static void main(MImage img, String imageShortName) {
 		System.out.println("Performing Uniform Color Quantization ...");
 		
 		initLUT();
 		
-		MImage indexImage = createIndexImage(img, 
-				outputLocation, imageShortName);
+		MImage indexImage = createIndexImage(img, imageShortName);
 		
-		createQuantizedImage(indexImage, outputLocation, imageShortName);
+		createQuantizedImage(indexImage, imageShortName);
 	}
 
 }
