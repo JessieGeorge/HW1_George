@@ -86,6 +86,10 @@ public class OrderedDithering {
 				
 				grayImg.getPixel(x, y, rgb);
 				
+				// Remap image values from 0-255 range into 0-16 range.
+				// k^2 + 1 = 17
+				int scaledGray = rgb[0] * 17 / 256;
+				
 				// Testing darkest pixel ... REMOVETHIS
 				if (x == 107 && y == 74) {
 					System.out.println("\nTESTING DARKEST PIXEL:"); 
@@ -93,7 +97,7 @@ public class OrderedDithering {
 					System.out.println("i = " + i + ", j = " + j + ", D[i][j] = " + D[i][j]); // REMOVETHIS
 				}
 				
-				if (rgb[0] > D[j][i]) {
+				if (scaledGray > D[j][i]) {
 					// white // TODO: double check if this should be white or black
 					rgb[0] = 255;
 					rgb[1] = 255;
