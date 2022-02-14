@@ -48,12 +48,12 @@ public class OrderedDithering {
 				
 				grayImg.getPixel(x, y, rgb);
 				
-				// Remap image values from 0-255 range into 0-16 range.
+				// Remap pixel values from 0-255 range into 0-16 range.
 				// k^2 + 1 = 17
 				int scaledGray = rgb[0] * 17 / 256;
 				
 				if (scaledGray > D[j][i]) {
-					// white // TODO: double check if this should be white or black
+					// white
 					rgb[0] = 255;
 					rgb[1] = 255;
 					rgb[2] = 255;

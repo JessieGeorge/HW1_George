@@ -1,19 +1,23 @@
 Jessie George
 CS4551 HW1
 
+This project performs image conversion to grayscale image, or binary image 
+using ordered dithering, or performs uniform color quantization, based on 
+user input. It takes a .ppm image as input through command line arguments.
+The output .ppm image is stored in current directory.
+
+--
 CS4551_George.java is the main class.
+
+main function reads the input .ppm file. 
+If that file does not exist, it prints an error and exits the program.
 
 getImageShortName function removes the leading path and .ppm extension
 from the image file name, which is helpful later when we write output files.
 
 menu function prints menu and calls the other classes based on user's choice.
-in the menu function, outputLocation is set to a folder called HW1_Output in 
-the current directory. This is where the output ppm images will be stored.
 A copy of the original image is created, this is what we send to the conversion
 classes so that the original image is never altered.
-
-main function reads the input ppm file. 
-If that file does not exist, it prints an error and exits the program.
 
 --
 Grayscale.java converts the image to gray-scale using the formula:
@@ -24,8 +28,26 @@ R,G,B is set to gray.
 Output is written to [InputFileName]-gray.ppm
 
 --
-OrderedDithering.java
-TODO
+OrderedDithering.java converts to binary image using ordered dithering.
+
+setGrayImg function checks if the gray-scale image already exists, 
+else it creates one.
+
+In the main function, the dithering matrix is set as follows:
+int k = 4;
+int[][] D = {{0, 8, 2, 10},
+			 {12, 4, 14, 6},
+			 {3, 11, 1, 9},
+			 {15, 7, 13, 5}};
+			 
+We remap pixel values from 0-255 range into 0-16 range, using this formula:
+int scaledGray = rgb[0] * 17 / 256;
+where k^2 + 1 = 17
+
+Then we compare to the appropriate cell of the dither matrix, and set the 
+pixel to white or black.
+
+Output is written to [InputFileName]-OD4.ppm
 
 --
 UCQ.java is for Uniform Color Quantization
